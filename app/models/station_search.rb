@@ -17,7 +17,7 @@ class StationSearch
   end
   
   def response
-    conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zipcode}&fuel_type=ELEC,LPG&limit=10")
+    conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zipcode}&fuel_type=ELEC,LPG&limit=10&radius=6")
   end
 
   def conn
