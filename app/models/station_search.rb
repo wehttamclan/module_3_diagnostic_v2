@@ -6,7 +6,7 @@ class StationSearch
   end
 
   def stations
-    station_list.each do |station_data|
+    station_list.map do |station_data|
       Station.new(station_data)
     end
   end
