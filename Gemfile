@@ -19,6 +19,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'pry'
+  gem 'awesome_print'
 end
 
 group :development do
