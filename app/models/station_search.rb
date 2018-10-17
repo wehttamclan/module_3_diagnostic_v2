@@ -5,9 +5,19 @@ class StationSearch
     @zipcode = zipcode
   end
 
+  def stations
+    station_list.each do |station_data|
+      Station.new(station_data)
+    end
+  end
+
   def station_list
-    response = conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zipcode}&fuel_type=ELEC,LPG&limit=10")
-    JSON.parse(response.body, symbolize_names: true)
+    endpoint = JSON.parse(response.body, symbolize_names: true)
+    endpoint[:fuel_stations]
+  end
+  
+  def response
+    conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zipcode}&fuel_type=ELEC,LPG&limit=10")
   end
 
   def conn

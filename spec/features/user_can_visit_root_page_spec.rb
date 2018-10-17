@@ -12,13 +12,14 @@ feature "User can visit root page" do
     # As a user
     # When I visit "/"
     visit "/"
-    
+
     # And I fill in the search form with 80203 (Note: Use the existing search form)
     fill_in :q, with: 80203
 
     # And I click "Locate"
-    click_on 'Locate'
-
+    VCR.use_cassette("stations endpoint") do
+      click_on 'Locate'
+    end
     # Then I should be on page "/search"
     expect(current_path).to eq('/search')
 
